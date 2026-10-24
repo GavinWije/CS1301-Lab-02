@@ -14,7 +14,7 @@ st.set_page_config(
 
 st.title("Data Visualizations 📊")
 
-# --- PART 1: GRAPHS FROM data.json ---
+# PART 1: GRAPHS FROM data.json
 st.subheader("Teen Phone Usage Data")
 
 json_path = os.path.join(current_dir, "../data.json")
@@ -25,18 +25,20 @@ df_json = pd.DataFrame(json_data)
 st.bar_chart(df_json, x="App", y="Average Hours Spent")
 
 
-# --- PART 2: GRAPHS FROM data.csv ---
+# PART 2: GRAPHS FROM data.csv 
 st.subheader("Income by Educational Attainment")
 
 csv_path = os.path.join(current_dir, "../data.csv")
-df_csv = pd.read_csv(csv_path, skipinitialspace=True)
-# Clean column names just in case of hidden spaces
+df_csv = pd.read_csv(csv_path)
+
+# Clean up any accidental whitespace in column names
 df_csv.columns = df_csv.columns.str.strip()
 
+# Display the line or bar chart
 st.bar_chart(df_csv, x="Educational Attainment", y="Medium Weekly Income")
 
 
-# --- PART 3: INTERACTIVE SESSION STATE ---
+# PART 3: INTERACTIVE SESSION STATE 
 st.subheader("Interactive Data Updater")
 
 if "chart_data" not in st.session_state:
