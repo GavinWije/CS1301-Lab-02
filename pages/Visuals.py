@@ -29,7 +29,10 @@ st.bar_chart(df_json, x="App", y="Average Hours Spent")
 st.subheader("Income by Educational Attainment")
 
 csv_path = os.path.join(current_dir, "../data.csv")
-df_csv = pd.read_csv(csv_path)
+df_csv = pd.read_csv(csv_path, skipinitialspace=True)
+# Clean column names just in case of hidden spaces
+df_csv.columns = df_csv.columns.str.strip()
+
 st.bar_chart(df_csv, x="Educational Attainment", y="Medium Weekly Income")
 
 
