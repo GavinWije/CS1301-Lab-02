@@ -1,18 +1,25 @@
 
-{
-    "chart_title": "Sample Chart Data",
-    "data_points": [
-        {
-            "label": "Item A",
-            "value": 15
-        },
-        {
-            "label": "Item B",
-            "value": 30
-        },
-        {
-            "label": "Item C",
-            "value": 22
-        }
-    ]
-}
+[
+  {
+    "App": "Streaming Video",
+    "Average Hours Spent": 4
+  },
+  {
+    "App": "Social Media",
+    "Average Hours Spent": 2.5
+  },
+  {
+    "App": "Social Gaming",
+    "Average Hours Spent": 2
+  },
+  {
+    "App": "Messaging",
+    "Average Hours Spent": 0.5
+  },
+  {
+    "App": "Web Browsing",
+    "Average Hours Spent": 0.5
+  }
+]
+
+
