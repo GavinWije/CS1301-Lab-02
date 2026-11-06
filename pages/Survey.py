@@ -1,6 +1,6 @@
 # This creates the page for users to input data.
 # The collected data should be appended to the 'data.csv' file.
-
+import csv
 import streamlit as st
 import pandas as pd
 import os # The 'os' module is used for file system operations (e.g. checking if a file exists).
@@ -22,8 +22,8 @@ st.write("Please fill out the form below to add your data to the dataset.")
 with st.form("survey_form"):
     # Create text input widgets for the user to enter data.
     # The first argument is the label that appears above the input box.
-    category_input = st.text_input("Enter a category:")
-    value_input = st.text_input("Enter a corresponding value:")
+    category_input = st.text_input("Enter a metric(Sleep, Study, Exercise):")
+    value_input = st.text_input("How many hours do you do this per day?:")
 
     # The submit button for the form.
     submitted = st.form_submit_button("Submit Data")
@@ -37,6 +37,10 @@ with st.form("survey_form"):
         #    - You can use pandas or Python's built-in 'csv' module.
         #    - Make sure to open the file in 'append' mode ('a').
         #    - Don't forget to add a newline character '\n' at the end.
+        with open("data.csv", "a", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([category_input, value_input])
+        
         
         st.success("Your data has been submitted!")
         st.write(f"You entered: **Category:** {category_input}, **Value:** {value_input}")

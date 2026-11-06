@@ -1,10 +1,10 @@
-# This creates the page for displaying data visualizations.
+# Page for displaying data visualizations
 import streamlit as st
 import json
 import pandas as pd
 import os
 
-# Get the directory where Visuals.py is currently located
+
 current_dir = os.path.dirname(__file__)
 
 st.set_page_config(
@@ -14,7 +14,7 @@ st.set_page_config(
 
 st.title("Data Visualizations 📊")
 
-# PART 1: GRAPHS FROM data.json
+# Graphs from data.json
 st.subheader("Teen Phone Usage Data")
 
 json_path = os.path.join(current_dir, "../data.json")
@@ -25,7 +25,7 @@ df_json = pd.DataFrame(json_data)
 st.bar_chart(df_json, x="App", y="Average Hours Spent")
 
 
-# PART 2: GRAPHS FROM data.csv 
+# Graphs from data.csv 
 st.subheader("Income by Educational Attainment")
 
 csv_path = os.path.join(current_dir, "../data.csv")
@@ -35,10 +35,10 @@ df_csv = pd.read_csv(csv_path)
 df_csv.columns = df_csv.columns.str.strip()
 
 # Display the line or bar chart
-st.bar_chart(df_csv, x="Educational Attainment", y="Medium Weekly Income")
+st.bar_chart(df_csv, x="Educational Attainment", y="Median Weekly Income")
 
 
-# PART 3: INTERACTIVE SESSION STATE 
+# Interactive Session State 
 st.subheader("Interactive Data Updater")
 
 if "chart_data" not in st.session_state:
