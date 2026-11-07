@@ -23,35 +23,13 @@ with st.form("survey_form"):
     height_input = st.number_input("Your height (inches):", min_value=36, max_value=96, value=66, step=1)
     weight_input = st.number_input("Your weight (lbs):", min_value=50, max_value=500, value=150, step=1)
     submitted = st.form_submit_button("Submit Data")
-    
 
-    # The submit button for the form.
-    submitted = st.form_submit_button("Submit Data")
-
-    # This block of code runs ONLY when the submit button is clicked.
     if submitted:
-        # --- YOUR LOGIC GOES HERE ---
-        # TO DO:
-        # 1. Create a new row of data from 'category_input' and 'value_input'.
-        # 2. Append this new row to the 'data.csv' file.
-        #    - You can use pandas or Python's built-in 'csv' module.
-        #    - Make sure to open the file in 'append' mode ('a').
-        #    - Don't forget to add a newline character '\n' at the end.
         with open("data.csv", "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([height_input, weight_input])
         st.success("Your data has been submitted!")
         st.write(f"You entered: **Height:** {height_input} in, **Weight:** {weight_input} lbs")
-
-        
-    st.success("Your data has been submitted!")
-    st.write(f"You entered: **Height:** {height_input} in, **Weight:** {weight_input} lbs")
-
-
-# DATA DISPLAY
-# This section shows the current contents of the CSV file, which helps in debugging.
-st.divider() # Adds a horizontal line for visual separation.
-st.header("Current Data in CSV")
 
 # Check if the CSV file exists and is not empty before trying to read it.
 if os.path.exists('data.csv') and os.path.getsize('data.csv') > 0:

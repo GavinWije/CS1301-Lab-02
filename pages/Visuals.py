@@ -3,7 +3,7 @@ import streamlit as st
 import json
 import pandas as pd
 import os
-import matplotlib.pyplot as plt
+import matplotlib as plt
 
 
 current_dir = os.path.dirname(__file__)
