@@ -20,10 +20,10 @@ st.write("Please fill out the form below to add your data to the dataset.")
 # The form is submitted only when the user clicks the 'st.form_submit_button'.
 # This is useful for preventing the app from re-running every time a widget is changed.
 with st.form("survey_form"):
-    # Create text input widgets for the user to enter data.
-    # The first argument is the label that appears above the input box.
-    category_input = st.text_input("Enter a metric(Sleep, Study, Exercise):")
-    value_input = st.text_input("How many hours do you do this per day?:")
+    height_input = st.number_input("Your height (inches):", min_value=36, max_value=96, value=66, step=1)
+    weight_input = st.number_input("Your weight (lbs):", min_value=50, max_value=500, value=150, step=1)
+    submitted = st.form_submit_button("Submit Data")
+    
 
     # The submit button for the form.
     submitted = st.form_submit_button("Submit Data")
@@ -39,11 +39,13 @@ with st.form("survey_form"):
         #    - Don't forget to add a newline character '\n' at the end.
         with open("data.csv", "a", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([category_input, value_input])
-        
-        
+            writer.writerow([height_input, weight_input])
         st.success("Your data has been submitted!")
-        st.write(f"You entered: **Category:** {category_input}, **Value:** {value_input}")
+        st.write(f"You entered: **Height:** {height_input} in, **Weight:** {weight_input} lbs")
+
+        
+    st.success("Your data has been submitted!")
+    st.write(f"You entered: **Height:** {height_input} in, **Weight:** {weight_input} lbs")
 
 
 # DATA DISPLAY
